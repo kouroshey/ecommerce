@@ -1,8 +1,10 @@
-import React from 'react'
+import NavMobile from "./content/NavMobile"
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <>
+    <NavMobile />
+    </>
   )
 }
 
