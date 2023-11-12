@@ -1,13 +1,11 @@
 import MobileHeader from "./content/MobileHeader"
 import Logo from "./content/Logo"
-import { useEffect, useMemo, useState } from "react"
 import NavIcons from "./content/NavIcons"
 import Navbar from "./content/Navbar"
 import useWidth from "../../../hooks/useWidth"
 
 const Header = () => {
   const { width, breakPoints } = useWidth()
-  console.log(width);
   
   return (
     <header className="sticky top-0 w-full transition-all ease-out">
