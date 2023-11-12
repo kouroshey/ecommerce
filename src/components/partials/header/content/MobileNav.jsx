@@ -4,7 +4,7 @@ import NavIcons from "./NavIcons"
 import { useDispatch, useSelector } from "react-redux"
 import { getCollapsed } from "../../../../app/layout"
 
-const NavMobile = () => {
+const MobileNav = () => {
     const collapsed = useSelector(getCollapsed)
     return (
         <div >
@@ -21,4 +21,4 @@ const NavMobile = () => {
     )
 }
 
-export default NavMobile
+export default MobileNav

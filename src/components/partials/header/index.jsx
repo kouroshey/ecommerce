@@ -1,48 +1,31 @@
-import NavMobile from "./content/NavMobile"
+import MobileHeader from "./content/MobileHeader"
 import Logo from "./content/Logo"
 import { useEffect, useMemo, useState } from "react"
 import NavIcons from "./content/NavIcons"
 import Navbar from "./content/Navbar"
+import useWidth from "../../../hooks/useWidth"
 
 const Header = () => {
-  const [showMenuButton, setShowMenuButton] = useState(false)
-
-  useMemo(() => {
-    // set function for setting state
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setNavCollapsed(true)
-      } else {
-        setNavCollapsed(false)
-      }
-    }
-
-    // whenever window scrolled, action handleScroll
-    window.addEventListener('scroll', handleScroll)
-
-    // before action handleScroll, remove the previous action
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-
-  }, [window.scrollY])
-
-
+  const { width, breakPoints } = useWidth()
+  console.log(width);
   
-
   return (
     <header className="sticky top-0 w-full transition-all ease-out">
-      {/* <NavMobile /> */}
-      <div className="w-full h-full flex justify-between items-start bg-white rounded-md px-24 py-5 transition-all ease-in-out">
-        {/* right section */}
-        <section className="flex flex-1 w-full justify-start"><NavIcons /></section>
-        {/* center section */}
-        <section className="jusify-center flex-col gap-8 items-center flex w-full flex-1">
-          <Navbar />
-        </section>
-        {/* left section */}
-        <section className="flex flex-1 justify-end"><Logo /></section>
-      </div>
+      {width < breakPoints.sm ?
+        <MobileHeader />
+        :
+        <div className={`${width < breakPoints.lg ? 'px-12': 'px-24'} w-full h-full flex justify-between items-start bg-white rounded-md py-5 transition-all ease-in-out`}>
+          {/* right section */}
+          <section className="flex  justify-start"><NavIcons /></section>
+          {/* center section */}
+          <section className="jusify-center flex ">
+            <Navbar width={width} breakPoints={breakPoints} />
+          </section>
+          {/* left section */}
+          <section className="flex justify-end"><Logo /></section>
+        </div>
+      }
+
     </header>
   )
 }

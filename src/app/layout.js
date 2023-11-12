@@ -7,7 +7,8 @@ const initialDarkMode = () => {
 
 const initialState = {
     collapsed: true,
-    isDark: initialDarkMode()
+    isDark: initialDarkMode(),
+    innerWidth
 }
 
 const layoutSlice = createSlice({
