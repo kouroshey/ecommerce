@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom"
 import NavIcons from "./NavIcons"
-import { useState } from "react"
+
+import { useDispatch, useSelector } from "react-redux"
+import { getCollapsed } from "../../../../app/layout"
 
 const NavMobile = () => {
-    const [navCollapsed, setNavCollapsed] = useState(true)
+    const collapsed = useSelector(getCollapsed)
     return (
-        <div className={`${!navCollapsed ? 'bg-black/60 fixed h-full w-screen blur-lg' : ''}`}>
+        <div >
             <header className="">
             <ul>
                 <li><Link to='/'>خانه</Link></li>

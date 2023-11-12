@@ -7,8 +7,9 @@ export default {
   theme: {
     colors: {
       'pink': '#EDA3B5',
-      'white': '#FFFFF',
+      'white': '#FFFFFF',
       'black': '#1B2437',
+      'lightBg': '#F6F6F6',
       'gray': {
         1: '#1B2437',
         2: '#EFEFF4',
