@@ -1,17 +1,34 @@
 import MobileNav from "./MobileNav"
 import Logo from "./Logo"
-import { IoMenuOutline } from 'react-icons/io5'
+import MenuIcon from "./menuIcon"
+import { useState } from "react"
 
 const MobileHeader = () => {
+  const [collapsed, setCollapsed] = useState(true)
+  const showMenuHandler = () => {
+    console.log(collapsed);
+    setCollapsed(prev => prev = !prev)
+  }
   return (
-    <div className="w-full h-full flex justify-between items-start bg-white rounded-md px-8 py-5 transition-all ease-in-out">
-      {/* menu icon */}
-      <section className="flex flex-1 w-full justify-start">
-        <IoMenuOutline />
-      </section>
-      {/*logo */}
-      <section className="flex flex-1 justify-end"><Logo /></section>
-    </div>
+    <>
+      <div className="w-full h-full flex justify-between items-start bg-white rounded-md px-8 py-5 transition-all ease-in-out">
+        {/* menu icon */}
+        <div className="flex flex-1 justify-start">
+          <MenuIcon showMenuHandler={showMenuHandler} collapsed={collapsed} />
+        </div>
+        {/* navbar overlay */}
+        <div
+          onClick={showMenuHandler}
+          className={`absolute top-0 left-0 w-full h-screen backdrop-blur-sm z-20 bg-black/10 ${!collapsed ? 'flex' : 'hidden'}`}>
+        </div>
+        {/* navbar */}
+        <MobileNav collapsed={collapsed} showMenuHandler={showMenuHandler} />
+        {/*logo */}
+        <div className="flex flex-1 justify-end">
+          <Logo />
+        </div>
+      </div>
+    </>
   )
 }
 

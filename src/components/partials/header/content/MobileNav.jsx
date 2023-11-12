@@ -1,23 +1,41 @@
-import { Link } from "react-router-dom"
-import NavIcons from "./NavIcons"
+import { NavLink } from "react-router-dom"
+import { IoCloseSharp } from 'react-icons/io5'
+import Socials from '../../footer/content/Socials'
 
-import { useDispatch, useSelector } from "react-redux"
-import { getCollapsed } from "../../../../app/layout"
-
-const MobileNav = () => {
-    const collapsed = useSelector(getCollapsed)
+const MobileNav = ({ collapsed, showMenuHandler }) => {
+    const navbarCloseHandle = () => {
+        showMenuHandler()
+    }
     return (
-        <div >
-            <header className="">
-            <ul>
-                <li><Link to='/'>خانه</Link></li>
-                <li><Link to='shop'>فروشگاه</Link></li>
-                <li><Link to='#'>بلاگ</Link></li>
-                <li><Link to='#'>ارتباط با ما</Link></li>
-            </ul>
-            <NavIcons />
-        </header>
-        </div>
+        <ul
+            className={`
+            ${collapsed ? 'translate-x-96' : 'translate-x-0'} 
+            absolute right-0 top-0 text-gray-7 transition duration-300 z-50 w-1/2 rounded-md h-screen bg-pink pt-4 px-4 gap-4 flex flex-col`}
+        >
+            <li
+                className="after:w-full relative after:absolute after:h-[1px] after:bg-gray-7 after:-bottom-2 after:right-0"
+            >
+                <span className="absolute left-0 text-h3 hover:text-white hover:scale-105" onClick={navbarCloseHandle} >
+                    <IoCloseSharp />
+                </span>
+                <span>منو</span>
+            </li>
+            <li className="w-full hover:text-white">
+                <NavLink to='/'>خانه</NavLink>
+            </li>
+            <li className="w-full hover:text-white">
+                <NavLink to='shop'>فروشگاه</NavLink>
+            </li>
+            <li className="w-full hover:text-white">
+                <NavLink to='#'>بلاگ</NavLink>
+            </li>
+            <li className="w-full hover:text-white">
+                <NavLink to='#'>ارتباط با ما</NavLink>
+            </li>
+            <li className="flex justify-center w-full mt-16">
+                <Socials />
+            </li>
+        </ul>
     )
 }
 
