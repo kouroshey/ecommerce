@@ -11,7 +11,7 @@ const MobileHeader = () => {
   }
   return (
     <>
-      <div className="w-full h-full flex justify-between items-start bg-white rounded-md px-8 py-5 transition-all ease-in-out">
+      <div className="sticky top-0 z-50 h-full flex justify-between items-start bg-white rounded-md px-8 py-5 transition-all ease-in-out">
         {/* menu icon */}
         <div className="flex flex-1 justify-start">
           <MenuIcon showMenuHandler={showMenuHandler} collapsed={collapsed} />
