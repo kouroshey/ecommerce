@@ -19,7 +19,7 @@ const Navbar = ({ width, breakPoints }) => {
     return (
         <ul className={`${width < breakPoints.lg ? "gap-6" : 'gap-12'} flex w-full justify-center text-h4`}>
             {navItems.map(item => (
-                <li>
+                <li key={item.id}>
                     <NavLink
                         className={({ isActive, isPending }) => isActive? 'after:w-full relative after:absolute after:h-[1px] after:bg-pink after:-bottom-2 after:right-0': ''}
                         to={item.path}

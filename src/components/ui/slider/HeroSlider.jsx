@@ -37,30 +37,25 @@ const HeroSlider = () => {
         <Swiper
             spaceBetween={0}
             slidesPerView={1}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
+            // onSlideChange={() => console.log('slide change')}
+            // onSwiper={(swiper) => console.log(swiper)}
         >
             {dummySlides.map(item => (
-                <SwiperSlide>
+                <SwiperSlide key={item.id}>
                     <div className='h-full w-full'>
                         <img src={item.img} className='w-full h-full' />
-                        <div className='absolute text-black flex w-full h-full top-0'>
+                        <div className='absolute text-white flex w-full h-full top-0'>
                             <div className='flex flex-1'></div>
                             <div className='flex flex-1 justify-center items-center h-full'>
                                 <div className={`${width < breakPoints.lg ? 'w-60': width < breakPoints.md ? 'w-20' : 'w-80'} flex-col gap-4 flex`}>
                                     <h2 className='xl:text-h2 lg:text-h3 md:text-h4 text-body font-bold'>{item.text}</h2>
                                     <p className='xl:text-h4 lg:text-h5 md:text-body text-caption'>{item.desc}</p>
-                                    <a href={item.url}>
-                                        {/* <button
-                                            className='bg-none border border-gray-4 rounded-md xl:text-h4 lg:text-h5 md:text-body text-body px-8 py-2'
-                                        >نمایش بیشتر
-                                        </button> */}
                                         <Button
                                             text='نمایش بیشتر'
-                                            type='buttun'
-                                            isBlack= {true}
-                                            link={true} url='https://google.com' />
-                                    </a>
+                                        type='buttun'
+                                        isDisabled={true}
+                                        link={true} url='https://google.com'
+                                    />
                                 </div>
                             </div>
                         </div>

@@ -6,7 +6,6 @@ import { useState } from "react"
 const MobileHeader = () => {
   const [collapsed, setCollapsed] = useState(true)
   const showMenuHandler = () => {
-    console.log(collapsed);
     setCollapsed(prev => prev = !prev)
   }
   return (
