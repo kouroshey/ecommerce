@@ -5,10 +5,11 @@ import Button from '../Button';
 
 // Import Swiper styles
 import 'swiper/css';
+import CardDetail from '../CardDetail';
 
 const HeroSlider = () => {
     const { width, breakPoints } = useWidth()
-    
+
     const dummySlides = [
         {
             id: 1,
@@ -37,8 +38,8 @@ const HeroSlider = () => {
         <Swiper
             spaceBetween={0}
             slidesPerView={1}
-            // onSlideChange={() => console.log('slide change')}
-            // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log('slide change')}
+        // onSwiper={(swiper) => console.log(swiper)}
         >
             {dummySlides.map(item => (
                 <SwiperSlide key={item.id}>
@@ -47,15 +48,14 @@ const HeroSlider = () => {
                         <div className='absolute text-white flex w-full h-full top-0'>
                             <div className='flex flex-1'></div>
                             <div className='flex flex-1 justify-center items-center h-full'>
-                                <div className={`${width < breakPoints.lg ? 'w-60': width < breakPoints.md ? 'w-20' : 'w-80'} flex-col gap-4 flex`}>
-                                    <h2 className='xl:text-h2 lg:text-h3 md:text-h4 text-body font-bold'>{item.text}</h2>
-                                    <p className='xl:text-h4 lg:text-h5 md:text-body text-caption'>{item.desc}</p>
-                                        <Button
-                                            text='نمایش بیشتر'
+                                <div className='flex flex-col gap-4 items-start'>
+                                <CardDetail text={item.text} desc={item.desc} />
+                                <Button
+                                    text='نمایش بیشتر'
                                         type='buttun'
-                                        isDisabled={true}
-                                        link={true} url='https://google.com'
-                                    />
+                                        isGray={true}
+                                    link={true} url='https://google.com'
+                                />
                                 </div>
                             </div>
                         </div>
