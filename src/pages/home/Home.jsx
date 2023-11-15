@@ -68,7 +68,6 @@ const Home = () => {
       <section className="w-full rounded-md px-12">
         <ProductSlider products={products} />
       </section>
-      <div>sdfasdf</div>
     </main>
   )
 }
