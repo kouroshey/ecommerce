@@ -6,20 +6,10 @@ import 'swiper/css/pagination';
 
 import useWidth from '../../../hooks/useWidth';
 
-const HomeSlider = () => {
+const HomeSlider = ({slides}) => {
     const { width, breakPoints } = useWidth()
     
-    const slides = [
-        { id: 2, img: '../public/images/dress.png', name: 'dress' },
-        { id: 3, img: '../public/images/suit.png', name: 'suit' },
-        { id: 1, img: '../public/images/dress2.png', name: 'dress2' },
-        { id: 4, img: '../public/images/dress.png', name: 'dress' },
-        { id: 6, img: '../public/images/suit.png', name: 'suit' },
-        { id: 5, img: '../public/images/dress2.png', name: 'dress2' },
-        { id: 7, img: '../public/images/dress.png', name: 'dress' },
-        { id: 9, img: '../public/images/suit.png', name: 'suit' },
-        { id: 8, img: '../public/images/dress2.png', name: 'dress2' }
-    ]
+    
     return (
         <Swiper
             modules={[Autoplay, Navigation, Pagination]}
