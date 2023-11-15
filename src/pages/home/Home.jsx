@@ -5,7 +5,7 @@ const Home = () => {
     <main className="pt-6 flex flex-col gap-8">
       <Cards />
       {/* products slider */}
-      <section className="w-full bg-white rounded-md p-12">
+      <section className="w-full bg-white rounded-md px-12">
         <HomeSlider />
       </section>
       <div>sdfasdf</div>
