@@ -7,11 +7,10 @@ const Card = ({
     cardText,
     desc,
     text,
-    type,
     textPosition
 }) => {
     return (
-        <div className={`rounded-xl relative h-min hover:-translate-y-2 hover:cursor-pointer hover:shadow-md transition-all duration-300`}>
+        <div className={` rounded-xl relative h-min hover:-translate-y-2 hover:cursor-pointer hover:shadow-md transition-all duration-300`}>
             <img
                 src="../public/images/girl.jpg"
                 className={`rounded-xl ${maxHeight}`}

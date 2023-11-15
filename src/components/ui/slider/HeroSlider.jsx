@@ -1,6 +1,5 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import useWidth from '../../../hooks/useWidth';
 import Button from '../Button';
 
 // Import Swiper styles
@@ -8,7 +7,6 @@ import 'swiper/css';
 import CardDetail from '../CardDetail';
 
 const HeroSlider = () => {
-    const { width, breakPoints } = useWidth()
 
     const dummySlides = [
         {

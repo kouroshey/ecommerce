@@ -29,7 +29,7 @@ const Header = () => {
         }
 
       </header>
-      <div className="w-screen">
+      <div className="">
         {location.pathname === '/' && <HeroSlider />}
       </div>
     </>
