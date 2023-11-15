@@ -29,7 +29,9 @@ body {
 
 /* home slider styles start */
 
-.home-slider .swiper-wrapper {
+.home-slider .swiper-wrapper,
+.product-slider .swiper-wrapper
+{
     padding: 4rem 0 !important;
 }
 
@@ -43,17 +45,20 @@ body {
     font-size: 1.5rem;
 }
 
-.home-slider .swiper-pagination-bullet {
+.home-slider .swiper-pagination-bullet,
+.product-slider .swiper-pagination-bullet {
     position: relative;
     width: 10px; /* Adjust the width of the bullet */
     height: 10px; /* Adjust the height of the bullet */
-    background-color: #ababab; /* Set the background color of the bullet */
+    background-color: #EDA3B5; /* Set the background color of the bullet */
     opacity: 0.7; /* Set the opacity of the bullet */
-    border-radius: 50%; /* Make the bullet circular */
+    border-radius: 50%; /* Make the bullet circular */  
   }
 
   .home-slider .swiper-pagination-bullet:before,
-  .home-slider .swiper-pagination-bullet:after {
+  .home-slider .swiper-pagination-bullet:after,
+  .product-slider .swiper-pagination-bullet:before,
+  .product-slider .swiper-pagination-bullet:after {
     content: '';
     position: absolute;
     width: 100%;
@@ -67,21 +72,60 @@ body {
   }
 
   .home-slider .swiper-pagination-bullet-active:before,
-  .home-slider .swiper-pagination-bullet-active:after {
+  .home-slider .swiper-pagination-bullet-active:after,
+  .product-slider .swiper-pagination-bullet-active:before,
+  .product-slider .swiper-pagination-bullet-active:after {
     display: block; /* Display the rings for the active bullet */
   }
 
-  .home-slider .swiper-pagination-bullet-active {
+  .home-slider .swiper-pagination-bullet-active,
+  .product-slider .swiper-pagination-bullet-active {
     background-color: #000000; /* Set the background color of the active bullet */
     position: relative;
     z-index: 1; /* Bring the active bullet to the front */
   }
 
-  .home-slider .swiper-pagination-bullet-active:before {
+  .home-slider .swiper-pagination-bullet-active:before,
+  .product-slider .swiper-pagination-bullet-active:before {
     transform: scale(1.5); /* Adjust the size of the outer ring */
   }
 
 /* home slider styles end */
 
+/* product slider styles start */
+
+.product-slider .swiper-pagination {
+  right: 4% !important;
+  left: auto;
+  top: 1% !important;
+  text-align: start;
+}
+
+.product-slider .swiper-button-next:after, 
+.product-slider .swiper-button-prev:after {
+    color: rgba(164, 164, 164, 0.587);
+    background: white;
+    padding: 0.5rem 0.7rem;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.product-slider .swiper-button-next ,
+.product-slider .swiper-button-prev{
+  top: 3%;
+}
+
+.product-slider .swiper-button-next {
+  right: 14%;
+  left: auto;
+}
+
+
+.product-slider .swiper-button-prev{
+
+}
+
+
+/* product slider styles end */
 
 
