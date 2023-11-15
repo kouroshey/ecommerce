@@ -6,7 +6,7 @@ const Button = ({
   isPink,
   isGray,
   isDisabled,
-  link,
+  isLink,
   url,
   text = 'clickMe',
   type = 'button',
@@ -35,7 +35,7 @@ const Button = ({
 
   return (
     <>
-      {!link && <button
+      {!isLink && <button
         className={`
         ${defaultClass} 
         ${isPink && btnStyles.pink.hover}
@@ -54,7 +54,7 @@ const Button = ({
         {icon && icon}
         {text}
       </button>}
-      {link && <Link className={`
+      {isLink && <Link className={`
       ${defaultClass} 
       ${isPink && btnStyles.pink.hover}
       ${isGray && btnStyles.gray.hover}
