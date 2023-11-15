@@ -44,7 +44,7 @@ const HomeSlider = () => {
         >
             {slides.map(slide => (
                 <SwiperSlide key={slide.id}>
-                    <div className='h-60'>
+                    <div className='h-60 hover:cursor-pointer'>
                         <div className='h-full flex flex-col items-center justify-between'>
                             <div className=''>
                                 <img src={slide.img} className='w-28' />

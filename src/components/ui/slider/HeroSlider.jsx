@@ -1,6 +1,7 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Button from '../Button';
+import { Autoplay } from "swiper/modules";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -34,26 +35,32 @@ const HeroSlider = () => {
 
     return (
         <Swiper
+            modules={[Autoplay]}
             spaceBetween={0}
             slidesPerView={1}
+            autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+            }}
+            loop={true}
         // onSlideChange={() => console.log('slide change')}
         // onSwiper={(swiper) => console.log(swiper)}
         >
             {dummySlides.map(item => (
                 <SwiperSlide key={item.id}>
-                    <div className='h-full w-full'>
+                    <div className='h-full w-full hover:cursor-pointer'>
                         <img src={item.img} className='w-full h-full' />
                         <div className='absolute text-white flex w-full h-full top-0'>
                             <div className='flex flex-1'></div>
                             <div className='flex flex-1 justify-center items-center h-full'>
                                 <div className='flex flex-col gap-4 items-start'>
-                                <CardDetail text={item.text} desc={item.desc} />
-                                <Button
-                                    text='نمایش بیشتر'
+                                    <CardDetail text={item.text} desc={item.desc} />
+                                    <Button
+                                        text='نمایش بیشتر'
                                         type='buttun'
                                         isGray={true}
-                                    link={true} url='https://google.com'
-                                />
+                                        link={true} url='https://google.com'
+                                    />
                                 </div>
                             </div>
                         </div>
