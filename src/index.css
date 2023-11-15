@@ -7,11 +7,13 @@
     font-weight: 300;
     src: url(../public/fonts/IRANSansXFaNum-Light.woff2) format('woff2');
 }
+
 @font-face {
     font-family: 'iransans';
     font-weight: 500;
     src: url(../public/fonts/IRANSansXFaNum-Medium.woff2) format('woff2');
 }
+
 @font-face {
     font-family: 'iransans';
     font-weight: bold;
@@ -94,13 +96,6 @@ body {
 
 /* product slider styles start */
 
-.product-slider .swiper-pagination {
-  right: 4% !important;
-  left: auto;
-  top: 1% !important;
-  text-align: start;
-}
-
 .product-slider .swiper-button-next:after, 
 .product-slider .swiper-button-prev:after {
     color: rgba(164, 164, 164, 0.587);
@@ -109,22 +104,6 @@ body {
     border-radius: 5px;
     font-size: 1rem;
 }
-
-.product-slider .swiper-button-next ,
-.product-slider .swiper-button-prev{
-  top: 3%;
-}
-
-.product-slider .swiper-button-next {
-  right: 14%;
-  left: auto;
-}
-
-
-.product-slider .swiper-button-prev{
-
-}
-
 
 /* product slider styles end */
 
