@@ -21,7 +21,7 @@ const Navbar = ({ width, breakPoints }) => {
             {navItems.map(item => (
                 <li key={item.id}>
                     <NavLink
-                        className={({ isActive, isPending }) => isActive? 'after:w-full relative after:absolute after:h-[1px] after:bg-pink after:-bottom-2 after:right-0': ''}
+                        className={({ isActive, isPending }) => isActive? 'after:w-full relative after:absolute after:h-[1px] after:bg-pink after:-bottom-2 after:right-0': 'hover:text-pink hover:scale-105 transition-all'}
                         to={item.path}
                     >
                         {item.title}

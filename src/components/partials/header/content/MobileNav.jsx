@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 import { IoCloseSharp } from 'react-icons/io5'
-import Socials from '../../footer/content/Socials'
+import Socials from './Socials'
 
 const MobileNav = ({ collapsed, showMenuHandler }) => {
     const navbarCloseHandle = () => {

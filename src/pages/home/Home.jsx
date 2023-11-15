@@ -65,7 +65,7 @@ const Home = () => {
         <HomeSlider slides={slides} />
       </section>
       {/* products slider */}
-      <section className="w-full rounded-md px-12">
+      <section className="w-full rounded-md">
         <ProductSlider products={products} />
       </section>
     </main>

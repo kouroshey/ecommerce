@@ -17,7 +17,7 @@ const Footer = () => {
         </section>
       }
       <section className="flex px-8 sm:px-12 md:px-12 lg:px-24 py-8 gap-6">
-        <section className="flex-1 flex gap-36">
+        <section className="flex-1 flex md:gap-24 md:justify-start w-full justify-evenly">
           <Links />
           <MoreInfo />
         </section>
