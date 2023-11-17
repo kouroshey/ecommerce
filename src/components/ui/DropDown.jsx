@@ -24,6 +24,7 @@ const DropDown = ({
             <ul className="bg-white py-2 shadow-md rounded-lg gap-2 hidden group-hover:flex flex-col absolute top-full w-full">
                 {items?.map(item =>
                 (<li 
+                    key={item.id}
                     onClick={defaultValueHandle}
                     value={item.title}
                     className="hover:bg-pink transition-all text-gray-6 hover:text-white px-2 hover:cursor-pointer">
