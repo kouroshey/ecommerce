@@ -1,8 +1,12 @@
-import React from 'react'
+import ProductCard from './ProductCard'
 
-const ProductsList = () => {
+const ProductsList = ({products}) => {
   return (
-    <div>ProductsList</div>
+    <div>
+      {products.map(product => (
+        <ProductCard key={product.id} {...product} />
+      ))}
+    </div>
   )
 }
 

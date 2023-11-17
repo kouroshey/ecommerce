@@ -1,9 +1,17 @@
 import Filters from "./content/Filters"
 import ProductsList from "./content/ProductsList"
-import { supabase } from "../../config/supabaseClient"
+
+import { useSelector, useDispatch } from "react-redux"
+import { selectAllProducts, fetchProducts } from "./content/store"
+import { useEffect } from "react"
 
 const Shop = () => {
-  console.log(supabase);
+  const products = useSelector(selectAllProducts)
+  const dispatch = useDispatch()
+  useEffect(() => {
+      dispatch(fetchProducts())
+      
+  }, [])
   return (
     <div className="flex flex-col gap-8">
       <section className="py-4">
@@ -11,7 +19,7 @@ const Shop = () => {
       </section>
       <h2 className="text-h3 after:w-full after:absolute relative after:bg-pink after:right-0 after:-bottom-1 after:h-1 after:rounded-md w-max">محصولات</h2>
       <section>
-        <ProductsList />
+        <ProductsList products={products} />
       </section>
     </div>
   )
