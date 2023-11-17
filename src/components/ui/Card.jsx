@@ -31,7 +31,7 @@ const Card = ({
                 </div>
                 <div className='flex flex-1'></div>
             </div>
-            <div class="absolute top-0 opacity-20 z-10 bg-gradient-to-t via-black from-white to-black h-full w-full rounded-xl" />
+            <div className="absolute top-0 opacity-20 z-10 bg-gradient-to-t via-black from-white to-black h-full w-full rounded-xl" />
         </div>
     )
 }
