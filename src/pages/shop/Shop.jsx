@@ -1,7 +1,9 @@
 import Filters from "./content/Filters"
 import ProductsList from "./content/ProductsList"
+import { supabase } from "../../config/supabaseClient"
 
 const Shop = () => {
+  console.log(supabase);
   return (
     <div className="flex flex-col gap-8">
       <section className="py-4">
