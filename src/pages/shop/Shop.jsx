@@ -1,8 +1,13 @@
-import React from 'react'
+import Filters from "./content/Filters"
 
 const Shop = () => {
   return (
-    <div>Shop</div>
+    <>
+      <section className="py-4">
+      <Filters />
+      </section>
+      <span>shop</span>
+    </>
   )
 }
 
