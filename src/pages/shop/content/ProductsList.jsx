@@ -6,7 +6,7 @@ const ProductsList = ({ products }) => {
   return (
     <div>
       <div className='w-full grid grid-cols-4 gap-8 '>
-        {products.map(product => (
+        {products?.map(product => (
           <ProductCard key={product.id} {...product} />
         ))}
       </div>
