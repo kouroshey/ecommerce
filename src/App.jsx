@@ -4,6 +4,7 @@ import Shop from './pages/shop/Shop'
 import Error from './pages/404'
 import { Route, Routes } from 'react-router-dom'
 
+
 const App = () => {
   return (
     <main>

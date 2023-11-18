@@ -3,7 +3,8 @@ import {supabase} from '../../../config/supabaseClient'
 
 const initialState = {
     products: [],
-    status: null
+    status: null,
+    isProductModalShow: false,
 }
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
@@ -23,7 +24,11 @@ const productsSlice = createSlice({
     reducers: {
         fetchProducts(state, action) {
 
+        },
+        productModalShowHandler(state, action) {
+            state.isProductModalShow = !state.isProductModalShow
         }
+        
     },
     extraReducers(builder) {
         builder
@@ -41,5 +46,9 @@ const productsSlice = createSlice({
 })
 
 export const selectAllProducts = (state => state.products.products)
+export const getModalShow = (state) => state.products.isProductModalShow
+
+// actions
+export const { productModalShowHandler } = productsSlice.actions
 
 export default productsSlice.reducer

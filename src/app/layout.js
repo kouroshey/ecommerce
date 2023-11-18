@@ -6,20 +6,19 @@ const initialDarkMode = () => {
  }
 
 const initialState = {
-    collapsed: true,
+    
     isDark: initialDarkMode(),
-    innerWidth
 }
 
 const layoutSlice = createSlice({
     name: 'layout',
     initialState,
-    reducers: {}
+    reducers: {
+    }
 })
 
 // selectors
 export const getIsDark = (state) => state.layout.isDark
-export const getCollapsed = (state) => state.layout.collapsed
 
 export default layoutSlice.reducer
 
