@@ -1,11 +1,19 @@
 import Button from "../../../components/ui/Button"
+import { useDispatch, useSelector } from "react-redux"
+import { productModalShowHandler } from "./store"
 
 const ProductCard = ({
     title,
     desc,
     price,
-    img
+    img,
+    id,
 }) => {
+    const dispatch = useDispatch()
+    const showModalHandle = () => {
+        dispatch(productModalShowHandler())
+        console.log('show close');
+    }
     return (
         <div className="bg-white rounded-lg flex flex-col shadow-md">
             <div className='mb-4 h-80 overflow-hidden'>
@@ -18,7 +26,7 @@ const ProductCard = ({
                     <Button
                         isPink={true}
                         text="خرید محصول"
-                        isLink={true}
+                        onClick={showModalHandle}
                     />
                     <span className="text-body">قیمت: {price}</span>
                 </div>
