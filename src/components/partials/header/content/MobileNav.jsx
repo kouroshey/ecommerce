@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom"
 import { IoCloseSharp } from 'react-icons/io5'
 import Socials from './Socials'
+import CloseBtn from "../../../ui/CloseBtn"
 
 const MobileNav = ({ collapsed, showMenuHandler }) => {
     const navbarCloseHandle = () => {
@@ -15,8 +16,8 @@ const MobileNav = ({ collapsed, showMenuHandler }) => {
             <li
                 className="after:w-full relative after:absolute after:h-[1px] after:bg-pink after:-bottom-2 after:right-0"
             >
-                <span className="absolute left-0 text-h3 hover:text-pink hover:scale-105" onClick={navbarCloseHandle} >
-                    <IoCloseSharp />
+                <span className="absolute left-0">
+                    <CloseBtn closeFunction={navbarCloseHandle} />
                 </span>
                 <span>منو</span>
             </li>
