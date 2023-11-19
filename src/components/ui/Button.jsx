@@ -12,7 +12,7 @@ const Button = ({
   textSize,
   text = 'clickMe',
   type = 'button',
-  defaultClass = `flex items-center justify-center gap-2 px-4 py-2 text-${textSize ? textSize : 'caption'} rounded-md hover:shadow-sm w-${width ? width : 'max'} transition-all`,
+  defaultClass = `flex items-center justify-center gap-2 px-4 py-2 text-caption md:text-${textSize ? textSize : 'caption'} rounded-md hover:shadow-sm w-${width ? width : 'max'} transition-all`,
   icon,
   onClick,
   children,
