@@ -21,7 +21,7 @@ const DropDown = ({
                     className='bottom-2.5 hover:text-pink group-hover:rotate-180 transition-all'
                 />
             </button>
-            <ul className="bg-white py-2 shadow-md rounded-lg gap-2 hidden group-hover:flex flex-col absolute top-full w-full">
+            <ul className="bg-white py-2 shadow-md rounded-lg gap-2 hidden group-hover:flex flex-col absolute z-50 top-full w-full">
                 {items?.map(item =>
                 (<li 
                     key={item.id}
