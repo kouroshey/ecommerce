@@ -8,9 +8,11 @@ const Button = ({
   isDisabled,
   isLink,
   url,
+  width,
+  textSize,
   text = 'clickMe',
   type = 'button',
-  defaultClass = 'px-4 py-1 text-caption rounded-md hover:shadow-sm w-max transition-all',
+  defaultClass = `flex items-center justify-center gap-2 px-4 py-2 text-${textSize ? textSize : 'caption'} rounded-md hover:shadow-sm w-${width ? width : 'max'} transition-all`,
   icon,
   onClick,
   children,
@@ -51,8 +53,8 @@ const Button = ({
         onClick={onClick}
       >
         {children && children}
-        {icon && icon}
         {text}
+        {icon && icon}
       </button>}
       {isLink && <Link className={`
       ${defaultClass} 
