@@ -5,6 +5,7 @@ const initialState = {
     products: [],
     status: null,
     isProductModalShow: false,
+    modalProduct: {}
 }
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
@@ -27,6 +28,8 @@ const productsSlice = createSlice({
         },
         productModalShowHandler(state, action) {
             state.isProductModalShow = !state.isProductModalShow
+            state.modalProduct = state.products.find(product => product.id === action.payload)
+
         }
         
     },
@@ -47,6 +50,7 @@ const productsSlice = createSlice({
 
 export const selectAllProducts = (state => state.products.products)
 export const getModalShow = (state) => state.products.isProductModalShow
+export const getModalProduct = (state) => state.products.modalProduct
 
 // actions
 export const { productModalShowHandler } = productsSlice.actions
