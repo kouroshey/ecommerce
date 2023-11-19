@@ -15,11 +15,14 @@ const ProductCard = ({
     }
     return (
         <div className="bg-white rounded-lg flex flex-col shadow-md">
-            <div className='mb-4 h-80 overflow-hidden'>
+            <div className='mb-4 max:h-80 md: overflow-hidden'>
                 <img src={img} className="object-cover w-full h-full rounded-t-lg" />
             </div>
             <div className="px-4 pb-4 flex flex-col gap-4">
-                <h2 className="text-h3">{title}</h2>
+                <div className="flex flex-col gap-4">
+                    <h2 className="md:text-h3 text-h4 select-none">{title}</h2>
+                    <p className="text-gray-6 text-body md:text-base-1 text-ellipsis whitespace-nowrap overflow-hidden">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+                </div>
                 <p className='text-body text-gray-6'>{desc}</p>
                 <div className="w-full flex justify-between items-center">
                     <Button
