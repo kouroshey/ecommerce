@@ -1,5 +1,5 @@
 import Button from "../../../components/ui/Button"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { productModalShowHandler } from "./store"
 
 const ProductCard = ({
@@ -11,8 +11,7 @@ const ProductCard = ({
 }) => {
     const dispatch = useDispatch()
     const showModalHandle = () => {
-        dispatch(productModalShowHandler())
-        console.log('show close');
+        dispatch(productModalShowHandler(id))
     }
     return (
         <div className="bg-white rounded-lg flex flex-col shadow-md">
