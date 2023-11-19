@@ -1,10 +1,17 @@
-
+import { TbTruckDelivery } from "react-icons/tb";
+import { IoShieldCheckmarkOutline } from "react-icons/io5";
 
 const Guarantee = () => {
   return (
-      <div>
-          <span><img src="" alt="" srcset="" /></span>
-          <span className='before:content-["\F04D\00FE0E"] before:flex before:w-10 before:h-10 before:text-gray-6 before:text-h2'>آماده ارسال</span>
+    <div className="flex flex-col gap-2 text-body select-none">
+      <div className="flex gap-4">
+        <span className=""><TbTruckDelivery className="text-gray-6" /></span>
+        <span className=''>آماده ارسال</span>
+      </div>
+      <div className="flex gap-4">
+        <span className=""><IoShieldCheckmarkOutline className="text-gray-6" /></span>
+        <span className=''>ضمانت اصالت کالا</span>
+      </div>
     </div>
   )
 }
