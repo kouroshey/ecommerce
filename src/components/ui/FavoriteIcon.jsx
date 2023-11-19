@@ -7,7 +7,7 @@ const FavoriteIcon = () => {
     const checkHandle = () => setChecked(prev => prev = !prev)
   return (
       <span
-          className="text-h3"
+          className="text-h3 hover:scale-110 transition-all"
             onClick={checkHandle}
       >
           {!checked ?
