@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 w-full transition-all ease-out z-40">
+      <header className="sticky top-0 w-full transition-all ease-out z-30">
         {width < breakPoints.sm ?
           <MobileHeader />
           :
