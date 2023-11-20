@@ -1,6 +1,7 @@
 import Layout from './layout/Layout'
 import Home from './pages/home/Home'
 import Shop from './pages/shop/Shop'
+import Cart from './pages/cart/Cart'
 import Error from './pages/404'
 import { Route, Routes } from 'react-router-dom'
 
@@ -16,6 +17,7 @@ const App = () => {
         >
           <Route index element={<Home />} />
           <Route path='shop' element={<Shop />} />
+          <Route path='cart' element={<Cart />} />
         </Route>
       </Routes>
     </main>
