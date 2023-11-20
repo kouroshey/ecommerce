@@ -1,4 +1,4 @@
-import Logo from '../../header/content/Logo'
+import Logo from "../../../ui/Logo"
 
 const Info = () => {
     return (

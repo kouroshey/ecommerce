@@ -1,5 +1,5 @@
 import MobileNav from "./MobileNav"
-import Logo from "./Logo"
+import Logo from "../../../ui/Logo"
 import MenuIcon from "./menuIcon"
 import { useState } from "react"
 

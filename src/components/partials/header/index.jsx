@@ -1,5 +1,5 @@
 import MobileHeader from "./content/MobileHeader"
-import Logo from "./content/Logo"
+import Logo from "../../ui/Logo"
 import NavIcons from "./content/NavIcons"
 import Navbar from "./content/Navbar"
 import useWidth from "../../../hooks/useWidth"
