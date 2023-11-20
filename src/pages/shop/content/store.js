@@ -29,16 +29,13 @@ const productsSlice = createSlice({
         builder
             .addCase(fetchProducts.pending, (state, action) => {
                 state.status = 'loading'
-                console.log(state.status);
             })
             .addCase(fetchProducts.fulfilled, (state, action) => {
                 if (action.payload) {
                     state.products = action.payload
                     state.status = 'succeeded'
-                    console.log(action.payload);
                 } else {
                     state.status = 'failed'
-                    console.log('failed');
                 }
             })
     }

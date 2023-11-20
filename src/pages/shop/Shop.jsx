@@ -8,6 +8,7 @@ const Shop = () => {
   const products = useSelector(selectAllProducts)
   const status = useSelector(getProductsStatus)
 
+  // error handling
   let content;
   if (status === 'pending') {
     content = <p className="text-favorite py-4">لطفا منتظر لود شدن محصولات بمانید...</p>
