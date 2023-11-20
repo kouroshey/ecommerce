@@ -18,7 +18,7 @@ const Shop = () => {
       <section className="py-4">
       <Filters />
       </section>
-      <h2 className="text-h3 after:w-full after:absolute relative after:bg-pink after:right-0 after:-bottom-1 after:h-1 after:rounded-md w-max">محصولات</h2>
+      <h2 className="text-h3 after:w-full after:absolute relative after:bg-pink after:right-0 after:-bottom-1 after:h-[2px] after:rounded-md w-max">محصولات</h2>
       <section>
         <ProductsList products={products}/>
       </section>

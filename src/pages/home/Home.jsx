@@ -1,6 +1,12 @@
+import { useEffect } from "react"
+
 import Cards from "./content/Cards"
 import HomeSlider from "./content/HomeSlider"
 import ProductSlider from "./content/ProductSlider"
+
+import { useSelector, useDispatch } from "react-redux"
+import { selectAllProducts, fetchProducts } from "../shop/content/store"
+
 const Home = () => {
   const slides = [
     { id: 2, img: '../public/images/dress.png', name: 'dress' },
@@ -13,52 +19,17 @@ const Home = () => {
     { id: 9, img: '../public/images/suit.png', name: 'suit' },
     { id: 8, img: '../public/images/dress2.png', name: 'dress2' }
   ]
-  const products = [
-    {
-      id: 1,
-      title: 'گوچی زنانه مشکی',
-      desc: 'این یک گوچی فوق العاده است آتیش زدم به مالم اگه نخری خیلی خری',
-      price: '715',
-      img: '../../../public/images/girl-1.jpg'
-    },
-    {
-      id: 2,
-      title: 'گوچی زنانه صورتی',
-      desc: 'این یک گوچی فوق العاده است آتیش زدم به مالم اگه نخری خیلی خری',
-      price: '214',
-      img: '../../../public/images/girl-2.jpg'
-    },
-    {
-      id: 3,
-      title: 'دورس دوبنده صورتی',
-      desc: 'این یک گوچی فوق العاده است آتیش زدم به مالم اگه نخری خیلی خری',
-      price: '214',
-      img: '../../../public/images/girl-3.jpg'
-    },
-    {
-      id: 4,
-      title: 'زیرشلواری راه راه',
-      desc: 'این یک گوچی فوق العاده است آتیش زدم به مالم اگه نخری خیلی خری',
-      price: '200',
-      img: '../../../public/images/girl-4.jpg'
-    },
-    {
-      id: 5,
-      title: 'کفش نارنجی خزززز',
-      desc: 'این یک گوچی فوق العاده است آتیش زدم به مالم اگه نخری خیلی خری',
-      price: '250',
-      img: '../../../public/images/girl-5.jfif'
-    },
-    {
-      id: 6,
-      title: 'خز ترین جوراب های دنیا',
-      desc: 'این یک گوچی فوق العاده است آتیش زدم به مالم اگه نخری خیلی خری',
-      price: '10',
-      img: '../../../public/images/girl.jpg'
-    },
-  ]
+
+  const allProducts = useSelector(selectAllProducts)
+  const popularProducts = allProducts.filter(product => product.popular === true)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchProducts())
+
+  }, [])
+
   return (
-    <main className="pt-6 flex flex-col gap-8">
+    <main className="pt-6 flex flex-col gap-12">
       <Cards />
       {/* home slider */}
       <section className="w-full bg-white rounded-md px-12">
@@ -66,7 +37,8 @@ const Home = () => {
       </section>
       {/* products slider */}
       <section className="w-full rounded-md">
-        <ProductSlider products={products} />
+        <h2 className="text-h3 w-max border-b-2 border-b-pink pb-2">محصولات محبوب</h2>
+        <ProductSlider products={popularProducts} />
       </section>
     </main>
   )

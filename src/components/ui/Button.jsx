@@ -5,6 +5,7 @@ const Button = ({
   isBlack,
   isPink,
   isGray,
+  isRed,
   isDisabled,
   isLink,
   url,
@@ -32,6 +33,11 @@ const Button = ({
       hover: 'hover:bg-white hover:text-pink',
       default: 'border border-gray-2 text-white',
       disabled: 'bg-gray-2 text-gray-5 opacity-80'
+    },
+    red: {
+      hover: 'hover:bg-favorite hover:text-white',
+      default: 'border border-favorite text-favorite',
+      disabled: 'bg-gray-2 text-gray-5'
     }
   }
 
@@ -43,9 +49,11 @@ const Button = ({
         ${isPink && btnStyles.pink.hover}
         ${isGray && btnStyles.gray.hover}
         ${isBlack && btnStyles.black.hover}
+        ${isRed && btnStyles.red.hover}
         ${isPink && !isDisabled ? btnStyles.pink.default : isPink && isDisabled ? btnStyles.pink.disabled :
             isBlack && !isDisabled ? btnStyles.black.default : isBlack && isDisabled ? btnStyles.black.disabled :
-              isGray && !isDisabled ? btnStyles.gray.default : isGray && isDisabled ? btnStyles.gray.disabled : ''
+              isGray && !isDisabled ? btnStyles.gray.default : isGray && isDisabled ? btnStyles.gray.disabled :
+                isRed && !isDisabled ? btnStyles.red.default : isRed && isDisabled ? btnStyles.red.disabled : ''
           }
       `}
         value={text}
@@ -61,9 +69,12 @@ const Button = ({
       ${isPink && btnStyles.pink.hover}
       ${isGray && btnStyles.gray.hover}
       ${isBlack && btnStyles.black.hover}
+      ${isRed && btnStyles.red.hover}
       ${isPink && !isDisabled ? btnStyles.pink.default : isPink && isDisabled ? btnStyles.pink.disabled :
           isBlack && !isDisabled ? btnStyles.blackisBlack.default : isBlack && isDisabled ? btnStyles.blackisBlack.disabled :
-            isGray && !isDisabled ? btnStyles.gray.default : isGray && isDisabled ? btnStyles.gray.disabled : ''
+            isGray && !isDisabled ? btnStyles.gray.default : isGray && isDisabled ? btnStyles.gray.disabled :
+              isRed && !isDisabled ? btnStyles.red.default : isRed && isDisabled ? btnStyles.red.disabled : ''
+
         }
       `}
         to={url}
