@@ -1,9 +1,20 @@
+import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import Header from '../components/partials/header'
 import Footer from '../components/partials/footer'
 import ProductModal from '../pages/shop/content/ProductModal'
 
+import { useDispatch } from 'react-redux'
+import { fetchProducts } from '../pages/shop/content/store'
+
 const Layout = () => {
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchProducts())
+        
+    }, [])
+
     return (
         <>
             <ProductModal />
