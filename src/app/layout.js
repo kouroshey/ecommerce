@@ -6,7 +6,6 @@ const initialDarkMode = () => {
  }
 
 const initialState = {
-    
     isDark: initialDarkMode(),
 }
 
