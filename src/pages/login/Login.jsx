@@ -1,5 +1,4 @@
 import { useState } from "react"
-import LoginImage from "./content/LoginImage"
 import Auth from "./content/login-auth"
 import Register from "./content/login-reg"
 
