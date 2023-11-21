@@ -39,9 +39,7 @@ const PaginationButtons = ({ pages, onClick }) => {
     return (
         <motion.div variants={paginateVariants} initial = 'hidden' animate= 'visible'>
             <ReactPaginate
-
                 breakLabel={<span className=''>...</span>}
-
                 nextLabel={prevButton}
                 activeClassName='text-pink'
                 onPageChange={handlePageClick}
