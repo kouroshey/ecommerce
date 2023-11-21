@@ -10,6 +10,7 @@ import Guarantee from "../../../components/ui/Guarantee";
 import BigGuarantee from "./BigGuarantee";
 import CloseBtn from "../../../components/ui/CloseBtn";
 import SelectSize from "./SelectSize";
+import { addToCart } from '../../cart/content/store';
 
 const ProductModal = () => {
     const dispatch = useDispatch()
@@ -20,8 +21,18 @@ const ProductModal = () => {
         return null
     }
 
-    let { img, title, price, popular } = mainProduct || {}
-    price = Number(price).toLocaleString()
+    let { img, title, price, popular, id } = mainProduct || {}
+    const priceString = Number(price).toLocaleString()
+
+    const addItemToCartHandle = () => ( 
+        dispatch(addToCart({
+            id,
+            img,
+            price,
+            title,
+            amount : 1
+        }))
+    )
 
     return (
         <Modal modalCloseHandle={modalShowHandle}>
@@ -66,7 +77,7 @@ const ProductModal = () => {
                         <div>
                             <div className="flex justify-between w-full">
                                 <span>قیمت:</span>
-                                <span>{`${price} تومان`}</span>
+                                <span>{`${priceString} تومان`}</span>
                             </div>
                         </div>
                         <div className="flex w-full gap-2 justify-between">
@@ -82,6 +93,7 @@ const ProductModal = () => {
                                 width="full"
                                 textSize="sub-1"
                                 icon={<IoBagAdd className="text-pink text-h4" />}
+                                onClick={addItemToCartHandle}
                             />
                         </div>
                         <div className="flex w-full justify-evenly select-none">

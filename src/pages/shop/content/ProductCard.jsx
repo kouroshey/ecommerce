@@ -13,6 +13,8 @@ const ProductCard = ({
     const showModalHandle = () => {
         dispatch(productModalShowHandler(id))
     }
+    const priceString = Number(price).toLocaleString()
+
     return (
         <div className="bg-white rounded-lg flex flex-col shadow-md">
             <div className='mb-4 max:h-80 md: overflow-hidden'>
@@ -30,7 +32,7 @@ const ProductCard = ({
                         text="خرید محصول"
                         onClick={showModalHandle}
                     />
-                    <span className="text-body">قیمت: {price}</span>
+                    <span className="text-body">قیمت: {priceString}</span>
                 </div>
             </div>
         </div>
