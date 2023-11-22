@@ -1,4 +1,3 @@
-import React from 'react'
 
 const Input = ({
     inputId,
@@ -24,6 +23,7 @@ const Input = ({
                 dir='ltr'
                 type={type}
                 value={value}
+                name={inputId}
                 placeholder={placeholder}
                 className={`${defaultClass}
                 
