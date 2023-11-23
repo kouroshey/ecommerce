@@ -6,13 +6,18 @@ import ProductModal from '../pages/shop/content/ProductModal'
 
 import { useDispatch } from 'react-redux'
 import { fetchProducts } from '../pages/shop/content/store'
+import useCookie from '../hooks/useCookie'
+import { setAccessToken, setRefreshToken } from '../pages/login/content/store'
 
 const Layout = () => {
+    const accessToken = useCookie('access_token')
+    const refreshToken = useCookie('refresh_token')
 
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchProducts())
-        
+        dispatch(setAccessToken(accessToken))
+        dispatch(setRefreshToken(refreshToken))
     }, [])
 
     return (
