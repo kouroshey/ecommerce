@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom'
 import Basket from './Basket'
 import UserMenu from './userMenu'
 
+import { getAccessToken } from '../../../../pages/login/content/store'
+import { useSelector } from 'react-redux'
+
 const NavIcons = () => {
+  const accessToken = useSelector(getAccessToken)
+  console.log(accessToken);
   return (
     <ul className='flex gap-4 items-center text-h3 text-gray-7'>
       <li className='relative group'>
@@ -19,7 +24,7 @@ const NavIcons = () => {
           <IoPersonOutline className='hover:text-pink hover:scale-105 transition-all' />
         </Link>
         <div className='absolute top-5 right-0 w-96 hidden group-hover:flex'>
-          <UserMenu />
+          <UserMenu isLogin={accessToken ? true : false} />
         </div>
       </li>
       <li>
