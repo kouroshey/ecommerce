@@ -5,8 +5,7 @@ import Cart from './pages/cart/Cart'
 import Error from './pages/404'
 import Login from './pages/login/Login'
 import { Route, Routes } from 'react-router-dom'
-import Register from './pages/register/Register'
-
+import Register from './pages/login/Register'
 
 const App = () => {
   return (
