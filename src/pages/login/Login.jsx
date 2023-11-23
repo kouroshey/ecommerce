@@ -6,7 +6,7 @@ const Login = () => {
       <div className="bg-lightBg w-full h-full flex justify-center items-center">
         {/* form */}
         <LoginForm />
-        </div>
+      </div>
     </main>
   )
 }

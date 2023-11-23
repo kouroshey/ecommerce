@@ -1,16 +1,22 @@
 import Logo from '../../../components/ui/Logo'
 import { Link } from "react-router-dom"
 
+import { useDispatch, useSelector } from 'react-redux'
+import { loginHandle, getEmail, getPassword } from './store'
+
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useState } from 'react'
 
 const schema = yup.object({
   email: yup.string().email('لطفا ایمیل خود را به درستی وارد کنید').required('وارد کردن ایمیل الزامی است'),
-  password: yup.string().min(6)
+  password: yup.string().min(6, 'پسورد باید حداقل ۶ کارکتر باشد')
 })
 
 const LoginForm = () => {
+  const dispatch = useDispatch()
+
   const {
     register,
     handleSubmit,
@@ -19,7 +25,9 @@ const LoginForm = () => {
     resolver: yupResolver(schema)
   })
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    dispatch(loginHandle(data))
+  };
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -38,13 +46,13 @@ const LoginForm = () => {
         />
         {errors.email &&
           <span
-            className="flex w-full justify-start text-h4"
+            className="flex w-full justify-start text-body text-favorite"
           >
             {errors.email.message}
           </span>}
       </div>
       <div className='flex flex-col gap-2 w-full'>
-      {/* password */}
+        {/* password */}
         <label htmlFor="password">لطفا پسورد خود را وارد کنید</label>
         <input
           className='border border-gray-3 rounded-md px-2 py-1 text-gray-7 focus:border-pink w-full outline-none'
@@ -55,14 +63,14 @@ const LoginForm = () => {
         />
         {errors.password &&
           <span
-            className="flex w-full justify-start text-h4"
+            className="flex w-full justify-start text-body text-favorite"
           >
             {errors.password.message}
           </span>}
       </div>
       {/* submit */}
       <button
-        className="w-full text-pink hover:text-white bg-white hover:bg-pink rounded-md py-2 text-sub border border-pink"
+        className="w-full text-pink hover:text-white bg-white hover:bg-pink rounded-md py-2 text-sub border outline-none border-pink"
       >
         ورود
       </button>
