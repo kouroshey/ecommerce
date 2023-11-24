@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux'
 
 const NavIcons = () => {
   const accessToken = useSelector(getAccessToken)
-  console.log(accessToken);
   return (
     <ul className='flex gap-4 items-center text-h3 text-gray-7'>
       <li className='relative group'>
