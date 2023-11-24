@@ -1,4 +1,3 @@
-
 const useCookie = (name) => {
     const cookieString = document.cookie;
     const cookies = cookieString.split('; ');
