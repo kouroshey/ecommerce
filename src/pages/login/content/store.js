@@ -1,10 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { supabase } from '../../../config/supabaseClient'
+import useSetCookie from "../../../hooks/useSetCookie";
+
+import { toast } from "react-toastify";
 
 const initialState = {
     isLoading: true,
-    email: null,
-    password: null,
+    user: null,
     accessToken: localStorage.getItem('access_token'),
     refreshToken: localStorage.getItem('refresh_token'),
     error: null
@@ -39,6 +41,13 @@ const loginSlice = createSlice({
         },
         setRefreshToken(state, action) {
             state.refreshToken = action.payload
+        },
+        logOut(state, action) {
+            state.accessToken = null
+            state.user = null
+            state.refreshToken = null
+            state.error = null
+            useSetCookie('access_token', 0)
         }
     },
     extraReducers(builder) {
@@ -51,11 +60,10 @@ const loginSlice = createSlice({
                 state.isLoading = false
                 console.log(action.payload);
                 if (action.payload.user) {
-                    localStorage.setItem('access_token', action.payload.session.access_token)
-                    localStorage.setItem('refresh_token', action.payload.session.refresh_token)
-                    state.email = action.payload.user.email
+                    state.user = action.payload.user
+                    toast.success('ایمیل تاییدیه به ایمیل شما ارسال شد.')
                 } else {
-                    state.error = 'ایمیل و پسورد را به درستی وارد کنید'
+                    toast.error('لطفا ایمیل و پسورد را به درستی وارد کنید.')
                 }
             })
             // login cases
@@ -64,14 +72,17 @@ const loginSlice = createSlice({
             })
             .addCase(loginHandle.fulfilled, (state, action) => {
                 state.isLoading = false
-                if (action.payload.user) {
+                if (action.payload.session) {
                     localStorage.setItem('access_token', action.payload.session.access_token)
                     localStorage.setItem('refresh_token', action.payload.session.refresh_token)
-                    state.email = action.payload.user.email
+                    state.user = action.payload.user
+                    toast.error('ورود به حساب موفقیت آمیز بود :)')
                 } else {
+                    toast.error('ورود به حساب ناموفق بود :(')
+                    console.log('not exist');
+                    console.log(action.payload);
                     state.error = 'ایمیل و پسورد را به درستی وارد کنید'
                 }
-                console.log(localStorage.getItem('access_token'));
             })
     }
 })
@@ -80,7 +91,8 @@ export const getEmail = (state) => state.login.email
 export const getPassword = (state) => state.login.password
 export const getAccessToken = (state) => state.login.accessToken
 export const getRefreshToken = (state) => state.login.refreshToken
+export const getUser = (state) => state.login.user
 
-export const { setAccessToken, setRefreshToken } = loginSlice.actions
+export const { setAccessToken, setRefreshToken, logOut } = loginSlice.actions
 
 export default loginSlice.reducer
