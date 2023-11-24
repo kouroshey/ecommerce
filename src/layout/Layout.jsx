@@ -4,24 +4,22 @@ import Header from '../components/partials/header'
 import Footer from '../components/partials/footer'
 import ProductModal from '../pages/shop/content/ProductModal'
 
+import { ToastContainer } from 'react-toastify'
+
 import { useDispatch } from 'react-redux'
 import { fetchProducts } from '../pages/shop/content/store'
 import useCookie from '../hooks/useCookie'
 import { setAccessToken, setRefreshToken } from '../pages/login/content/store'
 
 const Layout = () => {
-    const accessToken = useCookie('access_token')
-    const refreshToken = useCookie('refresh_token')
-
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchProducts())
-        dispatch(setAccessToken(accessToken))
-        dispatch(setRefreshToken(refreshToken))
     }, [])
 
     return (
         <>
+            <ToastContainer toastClassName='font-iransans' />
             <ProductModal />
             <div className='flex flex-col'>
                 <Header />
