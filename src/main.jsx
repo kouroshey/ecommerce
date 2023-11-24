@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import "normalize.css/normalize.css";
+import 'react-toastify/dist/ReactToastify.css';
 import './index.css'
 
 import { store } from './app/index.js';

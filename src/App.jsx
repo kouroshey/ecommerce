@@ -12,7 +12,7 @@ const App = () => {
     <main>
       <Routes>
         <Route
-          path='/'
+          path='/*'
           element={<Layout />}
           errorElement={<Error />}
         >
