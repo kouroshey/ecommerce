@@ -6,6 +6,7 @@ import ProductSlider from "./content/ProductSlider"
 
 import { useSelector, useDispatch } from "react-redux"
 import { selectAllProducts, fetchProducts, getProductsErr, getProductsStatus } from "../shop/content/store"
+import { Link } from "react-router-dom"
 
 const Home = () => {
   const slides = [
@@ -48,9 +49,10 @@ const Home = () => {
         <HomeSlider slides={slides} />
       </section>
       {/* products slider */}
-      <section className="w-full rounded-md">
-        <h2 className="text-h3 w-max border-b-2 border-b-pink pb-2">محصولات محبوب</h2>
-        {content}
+      <section className="w-full rounded-md py-8 flex flex-col">
+        <h2 className="text-h3 w-max border-b-2 border-b-pink">محصولات محبوب</h2>
+        <div>{content}</div>
+        <p className="text-pink underline"><Link to='/shop'>دیدن همه‌ی محصولات</Link></p>
       </section>
     </main>
   )
