@@ -13,11 +13,6 @@ const Home = () => {
   const allProducts = useSelector(selectAllProducts)
   const popularProducts = allProducts?.filter(product => product.popular === true)
   const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchProducts())
-
-  }, [])
-
   let content;
   if (status === 'idle') {
     dispatch(fetchProducts())
