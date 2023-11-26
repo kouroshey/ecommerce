@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
+import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { signUpHandle } from "./store"
 import { ToastContainer, toast } from "react-toastify"
@@ -22,26 +23,19 @@ const RegisterForm = () => {
   const {
     handleSubmit,
     register,
-    formState: { errors }
+    reset,
+    formState: { isSubmitSuccessful, errors }
   } = useForm({ resolver: yupResolver(schema) })
 
   const onSubmit = (data) => {
-    if (errors.email) {
-      toast.error(errors.email.message, {
-        position: "top-right",
-        autoClose: 1500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        rtl: true,
-        className: "font-iransans",
-      })
-    }
     dispatch(signUpHandle(data))
   }
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset({ confirmPassword: '', email: '', password: '' })
+    }
+  }, [isSubmitSuccessful, reset])
 
   return (
     <>
@@ -76,9 +70,11 @@ const RegisterForm = () => {
           <input
             className={inputStyle}
             placeholder="password"
-            type="text"
+            type="password"
             name="password"
             id="password"
+            autoComplete="false"
+            security="true"
             {...register('password')}
           />
         </div>
@@ -94,9 +90,11 @@ const RegisterForm = () => {
           <input
             className={inputStyle}
             placeholder="confirmPassword"
-            type="text"
+            type="password"
             name="confirmPassword"
             id="confirmPassword"
+            autoComplete="false"
+            security="true"
             {...register('confirmPassword')}
           />
         </div>

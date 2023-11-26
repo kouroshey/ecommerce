@@ -18,6 +18,7 @@ const cartSlice = createSlice({
             state.mainPrice = state.mainPrice + itemPrice
             if (existsItem) {
                 existsItem.amount++
+                toast.warning('آیتم در سبد خرید وجود دارد')
                 existsItem.itemTotalPrice = existsItem.price * existsItem.amount
             } else {
                 state.items.push(
