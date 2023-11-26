@@ -22,10 +22,10 @@ const MobileNav = ({ collapsed, showMenuHandler }) => {
             id: 4, title: 'سبد خرید', icon: <IoCartOutline />, path: '/cart',
         },
         {
-            id: 5, title: 'بلاگ', icon: <IoNewspaperOutline />, path: '#',
+            id: 5, title: 'بلاگ', icon: <IoNewspaperOutline />, path: 'blog',
         },
         {
-            id: 6, title: 'ارتباط با ما', icon: <IoPeopleOutline />, path: '#',
+            id: 6, title: 'درباره‌ما', icon: <IoPeopleOutline />, path: 'about',
         },
     ]
     return (
