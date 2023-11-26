@@ -34,7 +34,7 @@ const Header = () => {
 
   return (
     <>
-      <header className={`${location.pathname === '/' && !isScrolling ? 'sm:absolute' : 'fixed'} top-0 w-full transition-all duration-1000 ease-out z-30`}>
+      <header className={`${location.pathname === '/' && !isScrolling ? 'sm:absolute' : 'sticky'} top-0 w-full transition-all duration-1000 ease-out z-30`}>
         {width < breakPoints.sm ?
           <MobileHeader isScrolling={isScrolling} isHeaderNav={true} location={location.pathname} />
           :
