@@ -6,7 +6,7 @@ const BlogCard = () => {
                 <img
                     src="https://ruucpllnoqbnsqkahgst.supabase.co/storage/v1/object/sign/products/palto-1.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwcm9kdWN0cy9wYWx0by0xLmpwZyIsImlhdCI6MTcwMDg5ODI3OSwiZXhwIjoxNzMyNDM0Mjc5fQ.jEdK3EyVHXPCf2zhDfVUI34Uter2__4LzCiqvs6c5bY&t=2023-11-25T07%3A44%3A39.729Z"
                     className='object-cover rounded-t-md'
-                    srcset="" />
+                />
             </div>
             <div className='flex flex-col gap-4 px-4 py-8'>
                 <h3 className='font-bold text-h4'>نحوه شستن انواع پالتو</h3>
