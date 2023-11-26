@@ -1,13 +1,18 @@
-import Layout from './layout/Layout'
-import Home from './pages/home/Home'
-import Shop from './pages/shop/Shop'
-import Cart from './pages/cart/Cart'
-import Error from './pages/404'
-import Login from './pages/login/Login'
+import { Suspense } from 'react';
+import { lazy } from 'react';
+
+const Layout = lazy(() => import('./layout/Layout'));
+const Home = lazy(() => import('./pages/home/Home'));
+const Shop = lazy(() => import('./pages/shop/Shop'));
+const Cart = lazy(() => import('./pages/cart/Cart'));
+const Error = lazy(() => import('./pages/404'));
+const Login = lazy(() => import('./pages/login/Login'));
+const Register = lazy(() => import('./pages/login/Register'));
+const Blog = lazy(() => import('./pages/blog/Blog'));
+const AboutUs = lazy(() => import('./pages/aboutus/AboutUs'));
+
 import { Route, Routes } from 'react-router-dom'
-import Register from './pages/login/Register'
-import Blog from './pages/blog/Blog'
-import AboutUs from './pages/aboutus/AboutUs'
+import CSpinner from './components/ui/CSpinner';
 
 const App = () => {
   return (
@@ -18,15 +23,50 @@ const App = () => {
           element={<Layout />}
           errorElement={<Error />}
         >
-          <Route index element={<Home />} />
-          <Route path='shop' element={<Shop />} />
-          <Route path='cart' element={<Cart />} />
-          <Route path='blog' element={<Blog />} />
-          <Route path='about' element={<AboutUs />} />
+          <Route
+            index
+            element={<Suspense fallback={<CSpinner />}>
+              <Home />
+            </Suspense>} />
+          <Route
+            path='shop'
+            element={<Suspense fallback={<CSpinner />}>
+              <Shop />
+            </Suspense>}
+          />
+          <Route
+            path='cart'
+            element={<Suspense fallback={<CSpinner />}>
+              <Cart />
+            </Suspense>}
+          />
+          <Route
+            path='blog'
+            element={<Suspense fallback={<CSpinner />}>
+              <Blog />
+            </Suspense>}
+          />
+          <Route
+            path='about'
+            element={<Suspense fallback={<CSpinner />}>
+              <AboutUs />
+            </Suspense>}
+          />
         </Route>
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='*' element={<Error />} />
+        <Route
+          path='/login'
+          element={<Suspense fallback={<CSpinner />}>
+            <Login />
+          </Suspense>}
+        />
+        <Route
+          path='/register'
+          element={<Suspense fallback={<CSpinner />}>
+            <Register />
+          </Suspense>}
+        />
+        <Route
+          path='*' element={<Suspense fallback={<CSpinner />}><Error /></Suspense>} />
       </Routes>
     </main>
   )
