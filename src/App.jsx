@@ -6,6 +6,8 @@ import Error from './pages/404'
 import Login from './pages/login/Login'
 import { Route, Routes } from 'react-router-dom'
 import Register from './pages/login/Register'
+import Blog from './pages/blog/Blog'
+import AboutUs from './pages/aboutus/AboutUs'
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path='shop' element={<Shop />} />
           <Route path='cart' element={<Cart />} />
+          <Route path='blog' element={<Blog />} />
+          <Route path='about' element={<AboutUs />} />
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
