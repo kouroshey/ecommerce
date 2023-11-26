@@ -38,8 +38,12 @@ const HeroSlider = () => {
             modules={[Autoplay]}
             spaceBetween={0}
             slidesPerView={1}
-            autoplay={false}
+            autoplay={{
+                delay: 3500,
+                disableOnInteraction: false,
+            }}
             loop={true}
+            className='xl:h-screen'
         // onSlideChange={() => console.log('slide change')}
         // onSwiper={(swiper) => console.log(swiper)}
         >
