@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { supabase } from '../../../config/supabaseClient'
-import useSetCookie from "../../../hooks/useSetCookie";
+import useDeleteCookie from "../../../hooks/useDeleteCookie";
 
 import { toast } from "react-toastify";
 
 const initialState = {
-    isLoading: true,
+    isLoading: false,
     user: null,
     accessToken: localStorage.getItem('access_token'),
     refreshToken: localStorage.getItem('refresh_token'),
@@ -43,11 +43,11 @@ const loginSlice = createSlice({
             state.refreshToken = action.payload
         },
         logOut(state, action) {
+            useDeleteCookie('sb-access-token')
             state.accessToken = null
             state.user = null
             state.refreshToken = null
             state.error = null
-            useSetCookie('access_token', 0)
         }
     },
     extraReducers(builder) {
@@ -61,7 +61,7 @@ const loginSlice = createSlice({
                 console.log(action.payload);
                 if (action.payload.user) {
                     state.user = action.payload.user
-                    toast.success('ایمیل تاییدیه به ایمیل شما ارسال شد.')
+                    toast.success('ایمیل تاییدیه به ایمیل شما ارسال شد. لطفا صندوق دریافتی خود را چک کنید.')
                 } else {
                     toast.error('لطفا ایمیل و پسورد را به درستی وارد کنید.')
                 }
@@ -88,6 +88,7 @@ const loginSlice = createSlice({
 })
 
 export const getEmail = (state) => state.login.email
+export const getIsLoading = (state) => state.login.isLoading
 export const getPassword = (state) => state.login.password
 export const getAccessToken = (state) => state.login.accessToken
 export const getRefreshToken = (state) => state.login.refreshToken
