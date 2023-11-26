@@ -6,10 +6,10 @@ import UserMenu from './userMenu'
 import { getAccessToken } from '../../../../pages/login/content/store'
 import { useSelector } from 'react-redux'
 
-const NavIcons = () => {
+const NavIcons = ({ location, isScrolling, isHeaderNav }) => {
   const accessToken = useSelector(getAccessToken)
   return (
-    <ul className='flex gap-4 items-center text-h3 text-gray-7'>
+    <ul className={`${location === '/' && !isScrolling && isHeaderNav ? 'text-white' : 'text-gray-7'} flex gap-4 items-center text-h3`}>
       <li className='relative group'>
         <Link to='cart' className=''>
           <IoBagOutline className='hover:text-pink hover:scale-105 transition-all' />

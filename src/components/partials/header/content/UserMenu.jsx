@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const UserMenu = ({ isLogin }) => {
     return (
-        <div className="w-max p-4 bg-white rounded-md shadow-lg border border-gray-2 flex flex-col gap-4">
+        <div className="w-max p-4 bg-white rounded-md shadow-lg border border-gray-2 flex flex-col gap-4 text-gray-7">
             {isLogin ?
                 <ul className='flex flex-col gap-2 text-body'>
                     <li><Link>نام کاربر</Link></li>

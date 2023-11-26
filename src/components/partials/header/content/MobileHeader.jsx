@@ -3,17 +3,17 @@ import Logo from "../../../ui/Logo"
 import MenuIcon from "./menuIcon"
 import { useState } from "react"
 
-const MobileHeader = () => {
+const MobileHeader = ({ isScrolling, location, isHeaderNav }) => {
   const [collapsed, setCollapsed] = useState(true)
   const showMenuHandler = () => {
     setCollapsed(prev => prev = !prev)
   }
   return (
     <>
-      <div className="sticky top-0 z-50 h-full flex justify-between items-center bg-white rounded-md px-8 py-5 transition-all ease-in-out">
+      <div className={`sticky w-full top-0 z-50 h-full flex justify-between items-center px-8 py-5 transition-all ease-in-out ${location === '/' && !isScrolling ? 'bg-gray-7' : 'bg-white'}`}>
         {/* menu icon */}
         <div className="flex flex-1 justify-start">
-          <MenuIcon showMenuHandler={showMenuHandler} collapsed={collapsed} />
+          <MenuIcon showMenuHandler={showMenuHandler} collapsed={collapsed} isScrolling={isScrolling} location={location} isHeaderNav={isHeaderNav} />
         </div>
         {/* navbar overlay */}
         <div
@@ -24,7 +24,7 @@ const MobileHeader = () => {
         <MobileNav collapsed={collapsed} showMenuHandler={showMenuHandler} />
         {/*logo */}
         <div className="flex flex-1 justify-end items-center">
-          <Logo />
+          <Logo isScrolling={isScrolling} location={location} isHeaderNav={isHeaderNav} />
         </div>
       </div>
     </>
