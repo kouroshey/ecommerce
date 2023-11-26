@@ -34,11 +34,11 @@ const Header = () => {
 
   return (
     <>
-      <header className={`${location.pathname === '/' && !isScrolling ? 'sm:absolute' : 'sticky'} top-0 w-full transition-all duration-1000 ease-out z-30`}>
+      <header className={`${location.pathname === '/' && !isScrolling ? 'sm:absolute' : 'sticky'} top-0 w-full transition-all duration-1000 ease-out z-30 flex`}>
         {width < breakPoints.sm ?
           <MobileHeader isScrolling={isScrolling} isHeaderNav={true} location={location.pathname} />
           :
-          <div className={`${width < breakPoints.lg ? 'px-12' : 'px-24'} ${location.pathname === '/' && !isScrolling ? 'bg-none' : 'bg-white'} w-full h-full flex justify-between items-start rounded-b-md py-5 transition-all ease-in-out`}>
+          <div className={`${width < breakPoints.lg ? 'px-12' : 'px-24'} ${location.pathname === '/' && !isScrolling ? 'bg-none' : 'bg-white'} w-full h-full flex justify-between items-start rounded-b-md py-5 transition-all ease-in-out items-center`}>
             {/* right section */}
             <section className="flex  justify-start"><NavIcons isScrolling={isScrolling} location={location.pathname} isHeaderNav={true} /></section>
             {/* center section */}
