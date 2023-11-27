@@ -1,5 +1,20 @@
 import { Link } from "react-router-dom"
 import BlogCard from "./BlogCard"
+import { motion } from "framer-motion"
+
+const animateVariants = {
+    offscreen: {
+        y: 300
+    },
+    onscreen: {
+        y: 0,
+        transition: {
+            type: "spring",
+            bounce: 0.4,
+            duration: 0.8
+        }
+    }
+}
 
 const BlogSection = () => {
     return (
@@ -20,10 +35,38 @@ const BlogSection = () => {
             <div className="flex items-center flex-col z-50 gap-10">
                 <h2 className="text-h2 font-bold text-white">بلاگ ها</h2>
                 <div className='grid grid-cols-2 xl:grid-cols-4 w-full justify-between gap-4'>
-                    <BlogCard />
-                    <BlogCard />
-                    <BlogCard />
-                    <BlogCard />
+                    <motion.div
+                        variants={animateVariants}
+                        initial="offscreen"
+                        whileInView="onscreen"
+                        viewport={{ once: true, amount: 0.2 }}
+                    >
+                        <BlogCard />
+                    </motion.div>
+                    <motion.div
+                        variants={animateVariants}
+                        initial="offscreen"
+                        whileInView="onscreen"
+                        viewport={{ once: true, amount: 0.3 }}
+                    >
+                        <BlogCard />
+                    </motion.div>
+                    <motion.div
+                        variants={animateVariants}
+                        initial="offscreen"
+                        whileInView="onscreen"
+                        viewport={{ once: true, amount: 0.4 }}
+                    >
+                        <BlogCard />
+                    </motion.div>
+                    <motion.div
+                        variants={animateVariants}
+                        initial="offscreen"
+                        whileInView="onscreen"
+                        viewport={{ once: true, amount: 0.5 }}
+                    >
+                        <BlogCard />
+                    </motion.div>
                 </div>
             </div>
             <p className="text-white underline pt-8"><Link to='/blog'>رفتن به صفحه بلاگ</Link></p>

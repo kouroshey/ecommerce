@@ -2,6 +2,7 @@ import { IoChatbubbleOutline, IoBagAdd } from 'react-icons/io5'
 
 import { getModalShow, getModalProduct, productModalShowHandler } from "./store";
 import { useSelector, useDispatch } from "react-redux"
+import { toast } from 'react-toastify';
 
 import Modal from "../../../components/ui/Modal"
 import Button from "../../../components/ui/Button";
@@ -11,8 +12,10 @@ import BigGuarantee from "./BigGuarantee";
 import CloseBtn from "../../../components/ui/CloseBtn";
 import SelectSize from "./SelectSize";
 import { addToCart } from '../../cart/content/store';
+import { useState } from 'react';
 
 const ProductModal = () => {
+    const [count, setCount] = useState(0)
     const dispatch = useDispatch()
     const mainProduct = useSelector(getModalProduct)
     const isModalShow = useSelector(getModalShow)
@@ -24,15 +27,19 @@ const ProductModal = () => {
     let { img, title, price, popular, id } = mainProduct || {}
     const priceString = Number(price).toLocaleString()
 
-    const addItemToCartHandle = () => ( 
+    const addItemToCartHandle = () => {
+        setCount(prev => prev = prev + 1)
         dispatch(addToCart({
             id,
             img,
             price,
             title,
-            amount : 1
+            amount: 1
         }))
-    )
+        if (count > 1) {
+            toast.warning('آیتم در سبد خرید وجود دارد')
+        }
+    }
 
     return (
         <Modal modalCloseHandle={modalShowHandle}>
