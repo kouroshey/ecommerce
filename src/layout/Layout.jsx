@@ -15,7 +15,6 @@ const Layout = () => {
     }, [])
 
     const status = useSelector(getProductsStatus)
-    console.log(status);
 
     return (
         <>
@@ -26,7 +25,7 @@ const Layout = () => {
                     <ProductModal />
                     <div className='flex flex-col'>
                         <Header />
-                        <main className='px-8 sm:px-12 md:px-12 lg:px-24 bg-lightBg'>
+                        <main className='bg-lightBg'>
                             <Outlet />
                         </main>
                         <Footer />

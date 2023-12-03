@@ -15,11 +15,8 @@ const Footer = () => {
   return (
     <footer className="w-full bg-lightBg">
       {width > breakPoints.sm &&
-        <div className="bg-light-bg flex flex-col pt-10">
-          {location.pathname === '/' && <BlogSection />}
-          <section className={`${location.pathname === '/' ? 'pt-24 pb-8' : 'py-8'}  w-full bg-white`}>
-            <Navbar width={width} breakPoints={breakPoints} isHeaderNav={false} />
-          </section>
+        <div className="bg-white flex flex-col pt-5">
+          <Navbar width={width} breakPoints={breakPoints} isHeaderNav={false} />
         </div>
       }
       <section className="flex px-8 sm:px-12 md:px-12 lg:px-24 py-8 gap-6 bg-white">

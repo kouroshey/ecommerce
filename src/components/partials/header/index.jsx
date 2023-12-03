@@ -4,7 +4,6 @@ import NavIcons from "./content/NavIcons"
 import Navbar from "./content/Navbar"
 import useWidth from "../../../hooks/useWidth"
 import { useLocation } from "react-router-dom"
-import HeroSlider from "../../ui/slider/HeroSlider"
 import { useState } from "react"
 import { useEffect } from "react"
 
@@ -51,11 +50,7 @@ const Header = () => {
             </section>
           </div>
         }
-
       </header >
-      <div className="">
-        {location.pathname === '/' && <HeroSlider />}
-      </div>
     </>
   )
 }
