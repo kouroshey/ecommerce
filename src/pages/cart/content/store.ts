@@ -1,7 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
-const initialState = {
+type ItemType = {
+
+}
+
+interface StoreStateType {
+    items: [],
+    mainPrice: number,
+    delivery: number
+}
+
+const initialState: StoreStateType = {
     items: [],
     mainPrice: 0,
     delivery: 35000,
