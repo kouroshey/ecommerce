@@ -3,8 +3,17 @@ import { supabase } from '../../../config/supabaseClient'
 import useDeleteCookie from "../../../hooks/useDeleteCookie";
 
 import { toast } from "react-toastify";
+import { RootReducer } from "../../../app/rootReducer";
 
-const initialState = {
+type LoginStateType = {
+    isLoading: boolean;
+    user: null;
+    accessToken: string | null;
+    refreshToken: string | null;
+    error: null;
+}
+
+const initialState: LoginStateType = {
     isLoading: false,
     user: null,
     accessToken: localStorage.getItem('access_token'),
@@ -12,16 +21,22 @@ const initialState = {
     error: null
 }
 
-export const signUpHandle = createAsyncThunk('auth/signUp', async ({ email, password }) => {
+type UserDataType = {
+    email: string,
+    password: string
+}
+
+export const signUpHandle = createAsyncThunk('auth/signUp', async ({ email, password }: UserDataType) => {
     const { data, error } = await supabase.auth.signUp({
         email: email,
         password: password
     })
-    if (data) { return data }
+
+    if (data) { return data.user }
     if (error) { return error }
 })
 
-export const loginHandle = createAsyncThunk('auth/login', async ({ email, password }) => {
+export const loginHandle = createAsyncThunk('auth/login', async ({ email, password }: UserDataType) => {
     const { data, error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password,
@@ -58,12 +73,13 @@ const loginSlice = createSlice({
             })
             .addCase(signUpHandle.fulfilled, (state, action) => {
                 state.isLoading = false
-                console.log(action.payload);
-                if (action.payload.user) {
-                    state.user = action.payload.user
-                    toast.success('ایمیل تاییدیه به ایمیل شما ارسال شد. لطفا صندوق دریافتی خود را چک کنید.')
-                } else {
-                    toast.error('لطفا ایمیل و پسورد را به درستی وارد کنید.')
+                if (action.payload) {
+                    if (action.payload) {
+                        state.user = action.payload
+                        toast.success('ایمیل تاییدیه به ایمیل شما ارسال شد. لطفا صندوق دریافتی خود را چک کنید.')
+                    } else {
+                        toast.error('لطفا ایمیل و پسورد را به درستی وارد کنید.')
+                    }
                 }
             })
             // login cases
@@ -72,27 +88,23 @@ const loginSlice = createSlice({
             })
             .addCase(loginHandle.fulfilled, (state, action) => {
                 state.isLoading = false
-                if (action.payload.session) {
-                    localStorage.setItem('access_token', action.payload.session.access_token)
-                    localStorage.setItem('refresh_token', action.payload.session.refresh_token)
+                if (action.payload) {
+                    localStorage.setItem('access_token', action.payload.session!.access_token)
+                    localStorage.setItem('refresh_token', action.payload.session!.refresh_token)
                     state.user = action.payload.user
                     toast.error('ورود به حساب موفقیت آمیز بود :)')
                 } else {
                     toast.error('ورود به حساب ناموفق بود :(')
-                    console.log('not exist');
-                    console.log(action.payload);
                     state.error = 'ایمیل و پسورد را به درستی وارد کنید'
                 }
             })
     }
 })
 
-export const getEmail = (state) => state.login.email
-export const getIsLoading = (state) => state.login.isLoading
-export const getPassword = (state) => state.login.password
-export const getAccessToken = (state) => state.login.accessToken
-export const getRefreshToken = (state) => state.login.refreshToken
-export const getUser = (state) => state.login.user
+export const getIsLoading = (state: RootReducer) => state.login.isLoading
+export const getAccessToken = (state: RootReducer) => state.login.accessToken
+export const getRefreshToken = (state: RootReducer) => state.login.refreshToken
+export const getUser = (state: RootReducer) => state.login.user
 
 export const { setAccessToken, setRefreshToken, logOut } = loginSlice.actions
 

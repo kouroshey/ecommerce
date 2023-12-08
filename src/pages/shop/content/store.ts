@@ -1,7 +1,27 @@
 import { createSlice, createAsyncThunk, createSelector } from "@reduxjs/toolkit";
 import { supabase } from "../../../config/supabaseClient";
 
-const initialState = {
+export type ProductType = {
+    category: string | null;
+    created_at: string;
+    desc: string | null;
+    id: number;
+    img: string | null;
+    popular: boolean | null;
+    price: string | null;
+    size: string | null;
+    title: string | null;
+}
+
+type ProductsStateType = {
+    products: ProductType[] | [],
+    status: 'idle' | 'pending' | 'succeeded' | 'failed',
+    error: string | null,
+    isProductModalShow: boolean,
+    modalProduct: {} | ProductType
+}
+
+const initialState: ProductsStateType = {
     products: [],
     status: "idle", // idle, pending, succeeded, failed
     error: null,
@@ -27,24 +47,26 @@ const productsSlice = createSlice({
     reducers: {
         productModalShowHandler(state, action) {
             state.isProductModalShow = !state.isProductModalShow;
-            state.modalProduct = state.products.find(
+            const exitingItem = state.products.find(
                 (product) => product.id === action.payload
             );
+            if (exitingItem) state.modalProduct = exitingItem
         },
     },
     extraReducers(builder) {
         builder
             .addCase(fetchProducts.pending, (state, action) => {
-                state.status = "loading";
+                state.status = "pending";
             })
             .addCase(fetchProducts.fulfilled, (state, action) => {
                 state.products = action.payload;
+                console.log(action.payload);
                 state.status = "succeeded";
                 state.error = null;
             })
             .addCase(fetchProducts.rejected, (state, action) => {
                 state.status = "failed";
-                state.error = action.error.message;
+                if (action.error.message) { state.error = action.error.message; }
             });
     },
 });
