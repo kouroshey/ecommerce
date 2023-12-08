@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from ".";
+import rootReducer, { RootReducer } from "./rootReducer";
 
 interface LayoutStateType {
     isDark: string | null,
@@ -22,7 +22,7 @@ const layoutSlice = createSlice({
 })
 
 // selectors
-export const getIsDark = (state: RootState) => state.layout.isDark
+export const getIsDark = (state: RootReducer) => state.layout.isDark
 
 export default layoutSlice.reducer
 
