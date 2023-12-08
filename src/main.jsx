@@ -5,7 +5,7 @@ import "normalize.css/normalize.css";
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css'
 
-import { store } from './app/index.js';
+import { store } from './app/index.ts';
 import { Provider } from 'react-redux';
 
 import { BrowserRouter } from 'react-router-dom'
