@@ -1,11 +1,12 @@
+import { ReactElement } from "react"
 
-const Container = ({ children }) => {
+const Container = (children: ReactElement) => {
     return (
-        <seciton className='w-full'>
+        <section className='w-full'>
             <div className="w-full px-8 sm:px-12 md:px-12 lg:px-24 ">
                 {children}
             </div>
-        </seciton>
+        </section>
     )
 }
 

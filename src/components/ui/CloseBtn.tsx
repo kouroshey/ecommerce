@@ -1,6 +1,6 @@
 import { IoCloseSharp } from "react-icons/io5"
 
-const CloseBtn = ({ closeFunction }) => {
+const CloseBtn = (closeFunction: () => void) => {
     const closeHandle = () => {
         closeFunction()
     }

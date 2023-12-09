@@ -1,13 +1,19 @@
-import React from 'react'
 import CardDetail from './CardDetail'
 import Button from './Button'
+
+interface CartProps {
+    cardText: string | undefined
+    desc: string | undefined
+    text: string | undefined
+    img: string | undefined
+}
 
 const Card = ({
     cardText,
     desc,
     text,
     img
-}) => {
+}: CartProps) => {
     return (
         <div className='rounded-xl relative h-full hover:-translate-y-2 hover:cursor-pointer hover:shadow-md transition-all duration-300'>
             <div className='overflow-hidden h-full'>

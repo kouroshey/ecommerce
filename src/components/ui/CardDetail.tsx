@@ -1,8 +1,9 @@
-import useWidth from "../../hooks/useWidth"
+interface CardDetailProps {
+    text: string | undefined
+    desc: string | undefined
+}
 
-const CardDetail = ({ text,
-    desc }) => {
-    const { width, breakPoints } = useWidth()
+const CardDetail = ({ text, desc }: CardDetailProps) => {
     return (
         <div className={` flex-col gap-1 md:gap-2 flex`}>
             <h2 className='xl:text-h3 lg:text-h4 md:text-sub text-body font-extrabold'>{text}</h2>

@@ -2,6 +2,16 @@ import { useState } from "react"
 import DropDown from "../../../components/ui/DropDown"
 import { IoChevronDown } from "react-icons/io5"
 
+export interface ShopDropDownItem {
+  id: string
+  title: string
+  isDefault: boolean
+}
+
+interface FilterOptions {
+  showOptions: ShopDropDownItem[]
+  sizeOptions: ShopDropDownItem[]
+}
 
 const Filter = () => {
   const [collapsed, setCollapsed] = useState(false)
@@ -9,7 +19,7 @@ const Filter = () => {
   const collapseHandle = () => {
     setCollapsed(prev => prev = !prev)
   }
-  const options = {
+  const options: FilterOptions = {
     showOptions: [
       { id: '1', title: 'جدید ترین', isDefault: true },
       { id: '2', title: 'محبوب ترین', isDefault: false },

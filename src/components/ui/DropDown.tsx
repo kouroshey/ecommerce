@@ -1,16 +1,24 @@
 import { IoChevronDown } from "react-icons/io5"
-import { useState } from "react";
+import { ChangeEvent, MouseEventHandler, useState } from "react";
+import { ShopDropDownItem } from "../../pages/shop/content/Filters";
 
+interface DropDownProps {
+    items: ShopDropDownItem[]
+    label: string
+}
 
 const DropDown = ({
     items,
     label
-}) => {
-    const [defaultValue, setDefaultValue] = useState(items.find(item => item.isDefault === true).title)
+}: DropDownProps) => {
+    const defaultOption = items.find(item => item.isDefault === true)?.title
 
-    const defaultValueHandle = (event) => setDefaultValue(event.target.innerHTML)
+    const [defaultValue, setDefaultValue] = useState<string | undefined>(defaultOption)
 
-     return (
+    //@ts-expect-error
+    const defaultValueHandle = (e: MouseEventHandler<HTMLLIElement>) => setDefaultValue(e.target.innerHTML)
+
+    return (
         <div className="flex flex-col gap-2 transition-all relative group">
             <p>{label}</p>
             <button
@@ -23,8 +31,9 @@ const DropDown = ({
             </button>
             <ul className="bg-white py-2 shadow-md rounded-lg gap-2 hidden group-hover:flex flex-col absolute z-50 top-full w-full">
                 {items?.map(item =>
-                (<li 
+                (<li
                     key={item.id}
+                    // @ts-expect-error
                     onClick={defaultValueHandle}
                     value={item.title}
                     className="hover:bg-pink transition-all text-gray-6 hover:text-white px-2 hover:cursor-pointer">
