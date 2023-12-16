@@ -1,4 +1,4 @@
-const useCookie = (name) => {
+const useCookie = (name: string) => {
     const cookieString = document.cookie;
     const cookies = cookieString.split('; ');
 

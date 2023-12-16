@@ -3,7 +3,12 @@ import Socials from './Socials'
 import CloseBtn from "../../../ui/CloseBtn"
 import { IoHomeOutline, IoCartSharp, IoPersonOutline, IoCartOutline, IoNewspaperOutline, IoPeopleOutline } from "react-icons/io5";
 
-const MobileNav = ({ collapsed, showMenuHandler }) => {
+interface MobileNavProps {
+    collapsed: boolean
+    showMenuHandler: () => void
+}
+
+const MobileNav = ({ collapsed, showMenuHandler }: MobileNavProps) => {
     const navbarCloseHandle = () => {
         showMenuHandler()
     }

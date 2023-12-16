@@ -1,9 +1,15 @@
 import MobileNav from "./MobileNav"
 import Logo from "../../../ui/Logo"
-import MenuIcon from "./menuIcon"
+import MenuIcon from "./MenuIcon"
 import { useState } from "react"
 
-const MobileHeader = ({ isScrolling, location, isHeaderNav }) => {
+interface MobileHeaderProps {
+  isScrolling: boolean,
+  location: string,
+  isHeaderNav: boolean
+}
+
+const MobileHeader = ({ isScrolling, location, isHeaderNav }: MobileHeaderProps) => {
   const [collapsed, setCollapsed] = useState(true)
   const showMenuHandler = () => {
     setCollapsed(prev => prev = !prev)

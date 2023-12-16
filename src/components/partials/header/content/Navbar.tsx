@@ -1,6 +1,15 @@
 import { NavLink } from "react-router-dom"
+import { BreakPointsType } from "../../../../hooks/useWidth"
 
-const Navbar = ({ width, breakPoints, isScrolling, location, isHeaderNav }) => {
+interface NavbarProps {
+    width: number,
+    breakPoints: BreakPointsType,
+    isScrolling: boolean,
+    location: string,
+    isHeaderNav: boolean
+}
+
+const Navbar = ({ width, breakPoints, isScrolling, location, isHeaderNav }: NavbarProps) => {
     const navItems = [
         {
             id: 1, title: 'خانه', path: '/',

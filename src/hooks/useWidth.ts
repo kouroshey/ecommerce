@@ -1,13 +1,20 @@
 import { useMemo, useState } from "react"
 
-export default function useWidth () {
+export interface BreakPointsType {
+    sm: number
+    md: number
+    lg: number
+    xl: number
+}
+
+export default function useWidth() {
     const [width, setWidth] = useState(window.innerWidth)
 
-    const breakPoints = {
-        sm: "640",
-        md: "768",
-        lg: "1024",
-        xl: "1280",
+    const breakPoints: BreakPointsType = {
+        sm: 640,
+        md: 768,
+        lg: 1024,
+        xl: 1280,
     }
 
     useMemo(() => {
@@ -22,5 +29,5 @@ export default function useWidth () {
         }
     }, [])
 
-    return {width, breakPoints}
+    return { width, breakPoints }
 }

@@ -57,7 +57,7 @@ const loginSlice = createSlice({
         setRefreshToken(state, action) {
             state.refreshToken = action.payload
         },
-        logOut(state, action) {
+        logOut(state) {
             useDeleteCookie('sb-access-token')
             state.accessToken = null
             state.user = null

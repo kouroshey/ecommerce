@@ -2,21 +2,16 @@ import Navbar from "../header/content/Navbar"
 import Info from "./content/Info"
 import Links from "./content/Links"
 import MoreInfo from "./content/MoreInfo"
-
 import useWidth from "../../../hooks/useWidth"
 import Icons from "./content/Icons"
-import BlogSection from "../../../pages/home/content/blogSection"
-
-import { useLocation } from "react-router-dom"
 
 const Footer = () => {
   const { width, breakPoints } = useWidth()
-  const location = useLocation()
   return (
     <footer className="w-full bg-lightBg">
       {width > breakPoints.sm &&
         <div className="bg-white flex flex-col pt-5">
-          <Navbar width={width} breakPoints={breakPoints} isHeaderNav={false} />
+          <Navbar width={width} breakPoints={breakPoints} isHeaderNav={false} isScrolling={true} location="/" />
         </div>
       }
       <section className="flex px-8 sm:px-12 md:px-12 lg:px-24 py-8 gap-6 bg-white">

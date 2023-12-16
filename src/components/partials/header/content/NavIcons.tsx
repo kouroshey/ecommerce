@@ -1,12 +1,17 @@
 import { IoSearchOutline, IoPersonOutline, IoBagOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import Basket from './Basket'
-import UserMenu from './userMenu'
-
+import UserMenu from './UserMenu'
 import { getAccessToken } from '../../../../pages/login/content/store'
 import { useSelector } from 'react-redux'
 
-const NavIcons = ({ location, isScrolling, isHeaderNav }) => {
+interface NavIconsProps {
+  location: string,
+  isScrolling: boolean,
+  isHeaderNav: boolean
+}
+
+const NavIcons = ({ location, isScrolling, isHeaderNav }: NavIconsProps) => {
   const accessToken = useSelector(getAccessToken)
   return (
     <ul className={`${location === '/' && !isScrolling && isHeaderNav ? 'text-white' : 'text-gray-7'} flex gap-4 items-center text-h3`}>
