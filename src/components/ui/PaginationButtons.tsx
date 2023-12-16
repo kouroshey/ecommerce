@@ -2,8 +2,13 @@ import ReactPaginate from 'react-paginate'
 import { IoChevronForward, IoChevronBack } from "react-icons/io5";
 import { motion } from 'framer-motion'
 
-const PaginationButtons = ({ pages, onClick }) => {
-    const handlePageClick = ({ selected }) => {
+interface PaginationButtonsPropsType {
+    pages: number,
+    onClick: React.Dispatch<React.SetStateAction<number>>
+}
+
+const PaginationButtons = ({ pages, onClick }: PaginationButtonsPropsType) => {
+    const handlePageClick = ({ selected }: { selected: number }) => {
         onClick(selected + 1)
     }
 
@@ -37,7 +42,7 @@ const PaginationButtons = ({ pages, onClick }) => {
             <IoChevronBack />
         </span>
     return (
-        <motion.div variants={paginateVariants} initial = 'hidden' animate= 'visible'>
+        <motion.div variants={paginateVariants} initial='hidden' animate='visible'>
             <ReactPaginate
                 breakLabel={<span className=''>...</span>}
                 nextLabel={prevButton}
