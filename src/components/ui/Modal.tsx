@@ -1,6 +1,11 @@
-import { useRef } from "react";
+import { ReactElement, useRef } from "react";
 
-const Modal = ({ children, modalCloseHandle }) => {
+interface ModalCloseHandleType {
+    payload: any;
+    type: string;
+}
+
+const Modal = ({ children, modalCloseHandle }: ReactElement ) => {
     const mainElementRef = useRef(null)
 
     const closeModalHandle = event => {
