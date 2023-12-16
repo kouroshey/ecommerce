@@ -1,15 +1,21 @@
-import { ReactElement, useRef } from "react";
+import React, { ReactNode, useRef } from "react";
 
-interface ModalCloseHandleType {
-    payload: any;
-    type: string;
+interface ModalProps {
+    children: ReactNode;
+    modalCloseHandle: () => {
+        payload: any;
+        type: "products/productModalShowHandler";
+    }
 }
 
-const Modal = ({ children, modalCloseHandle }: ReactElement ) => {
-    const mainElementRef = useRef(null)
+type CloseModalHandleType = (event: React.MouseEvent) => void
 
-    const closeModalHandle = event => {
-        if (!mainElementRef.current.contains(event.target)) {
+const Modal = ({ children, modalCloseHandle }: ModalProps) => {
+    const mainElementRef = useRef<HTMLDivElement>(null)
+
+    const closeModalHandle: CloseModalHandleType = (event: React.MouseEvent) => {
+
+        if (mainElementRef.current && mainElementRef.current.contains(event.target as Node)) {
             modalCloseHandle()
         }
     }
